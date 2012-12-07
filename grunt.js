@@ -87,34 +87,34 @@ module.exports = function(grunt) {
             "shared/livemap_connection.js"
           ],
           "backend/www/scripts/shared/lib": "shared/lib/*",
-          "frontend/dist/lib/map_center/modules/shared": [
+          "frontend/dist/second/shared": [
             "shared/livemap_status.js",
             "shared/livemap_popcorn.js",
             "shared/livemap_connection.js"
           ],
-          "frontend/dist/lib/map_center/modules/shared/lib": "shared/lib/*"
+          "frontend/dist/second/shared/lib": "shared/lib/*"
         }
       }
     },
     concat: {
       dist: {
         src: [
-            "frontend/dist/lib/map_center/modules/shared/lib/*.js",
-            "frontend/dist/lib/map_center/modules/shared/livemap_status.js",
-            "frontend/dist/lib/map_center/modules/shared/livemap_connection.js",
-            "frontend/dist/lib/map_center/modules/shared/livemap_popcorn.js",
+            "frontend/dist/second/shared/lib/*.js",
+            "frontend/dist/second/shared/livemap_status.js",
+            "frontend/dist/second/shared/livemap_connection.js",
+            "frontend/dist/second/shared/livemap_popcorn.js",
             "frontend/scripts/ui_realtime.js"
         ],
-        dest: "frontend/dist/lib/map_center/modules/livemap.js"
+        dest: "frontend/dist/second/livemap.js"
       },
       playback: {
         src: [
-            "frontend/dist/lib/map_center/modules/shared/lib/popcorn*.js",
-            "frontend/dist/lib/map_center/modules/shared/livemap_status.js",
-            "frontend/dist/lib/map_center/modules/shared/livemap_popcorn.js",
+            "frontend/dist/second/shared/lib/popcorn*.js",
+            "frontend/dist/second/shared/livemap_status.js",
+            "frontend/dist/second/shared/livemap_popcorn.js",
             "frontend/scripts/ui_playback.js"
         ],
-        dest: "frontend/dist/lib/map_center/modules/livemap-playback.js"
+        dest: "frontend/dist/second/livemap-playback.js"
       }
     },
     min: {

@@ -1,8 +1,8 @@
 {
-    "name": "newshour-map-center",
+    "name": "newshour-second-screen",
     "author": "PBS Newshour",
-    "description": "Vote 2012 Map Center",
-    "version": "0.0.1",
+    "description": "Second screen application",
+    "version": "0.1.0",
     "dependencies": {
         "socket.io": "0.9.6",
         "socket.io-client": "0.9.x",

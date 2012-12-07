@@ -2,8 +2,8 @@
 *.sublime*
 *.swp
 node_modules
-frontend/dist/lib/map_center/modules/livemap.js
-frontend/dist/lib/map_center/modules/livemap-playback.js
+frontend/dist/second/livemap.js
+frontend/dist/second/livemap-playback.js
 backend/schedule.json
 backend/credentials/oauth/*.json
 backend/credentials/ssl/*.pem
@@ -24,4 +24,4 @@ backend/www/scripts/require.js
 backend/www/scripts/jst.js
 # Copied from shared/ during build
 backend/www/scripts/shared
-frontend/dist/lib/map_center/modules/shared
+frontend/dist/second/shared
