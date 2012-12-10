@@ -15,7 +15,7 @@ chmod 700 /root
 
 # Include Debian testing repository in list of available packages
 echo "APT::Default-Release \"stable\";" >> /etc/apt/apt.conf
-echo "deb http://ftp.us.debian.org/debian/ testing main" >> /ect/apt/sources.lst
+echo "deb http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.lst
 echo "deb-src http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.lst
 
 apt-get update
