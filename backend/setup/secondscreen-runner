@@ -1,8 +1,8 @@
 #! /bin/bash
-# /etc/init.d/mapcenter-runner
+# /etc/init.d/secondscreen-runner
 
 ### BEGIN INIT INFO
-# Provides:		mapcenter-runner
+# Provides:		secondscreen-runner
 # Required-Start:	$syslog $remote_fs redis-server
 # Required-Stop:	$syslog $remote_fs redis-server
 # Should-Start:		$local_fs
@@ -35,7 +35,7 @@ case "$1" in
     start-stop-daemon --stop --user $NODE_USER
     ;;
   *)
-    echo "Usage: /etc/init.d/mapcenter-runner {start|stop}"
+    echo "Usage: /etc/init.d/secondscreen-runner {start|stop}"
     exit 1
     ;;
 esac

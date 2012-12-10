@@ -5,7 +5,7 @@
 NODE_HOST=127.0.0.1
 NODE_PORT=8000
 NODE_USER=noder
-PROJECT_REPO=https://github.com/newshour/map_center.git
+PROJECT_REPO=https://github.com/newshour/second_screen.git
 
 NODE_HOME=/home/$NODE_USER
 PROJECT_DIR=$NODE_HOME/map_center
@@ -75,7 +75,6 @@ source ~/.bashrc
 cd ~
 git clone $PROJECT_REPO $PROJECT_DIR
 cd $PROJECT_DIR
-git remote add bocoup https://github.com/bocoup/map_center.git
 npm install -g grunt
 npm install
 
@@ -88,10 +87,10 @@ cp ~/import/oauth/*.json $PROJECT_DIR/backend/credentials/oauth
 # Copy the MapCenter service script (responsible for pulling, building, and
 # running the project) into place, and make system aware of it so the script
 # will be run at startup
-cp ~/import/mapcenter-runner ~
-chmod 755 ~/mapcenter-runner
-ln -s ~/mapcenter-runner /etc/init.d/mapcenter-runner
-insserv -d mapcenter-runner
+cp ~/import/secondscreen-runner ~
+chmod 755 ~/secondscreen-runner
+ln -s ~/secondscreen-runner /etc/init.d/secondscreen-runner
+insserv -d secondscreen-runner
 
 # Start the service!
-~/mapcenter-runner start
+~/secondscreen-runner start
