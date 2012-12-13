@@ -47,44 +47,34 @@ cd .ssh
 touch authorized_keys
 cat ~/import/public-keys/*.pub >> authorized_keys
 
-su $NODE_USER
-cd ~
-
 # Set environmental variables in a source-able file
-touch ~/env-vars.sh
+touch /home/$NODE_USER/env-vars.sh
 echo "#! /bin/sh
 
 export NODE_HOST=$NODE_HOST
 export NODE_PORT=$NODE_PORT
 export PROJECT_DIR=$PROJECT_DIR
 export PATH=\$PATH:/opt/joyent/node/bin
-" > ~/env-vars.sh
+" > /home/$NODE_USER/env-vars.sh
+echo "source ~/env-vars.sh" >> /home/$NODE_USER/.bashrc
 
 # Install Node.js as the Node.js user
-mkdir builds
-cd builds
-wget http://nodejs.org/dist/v0.8.8/node-v0.8.8.tar.gz
-tar -zxvf node-v0.8.8.tar.gz
-cd node-v0.8.8
-./configure --prefix=/opt/joyent/node-0.8
-make
-make install
-source ~/.bashrc
+su $NODE_USER -c "mkdir /home/$NODE_USER/builds"
+su $NODE_USER -c "cd /home/$NODE_USER/builds; wget http://nodejs.org/dist/v0.8.8/node-v0.8.8.tar.gz"
+su $NODE_USER -c "cd /home/$NODE_USER/builds; tar -zxf node-v0.8.8.tar.gz"
+su $NODE_USER -c "cd /home/$NODE_USER/builds/node-v0.8.8; ./configure --prefix=/opt/joyent/node-0.8"
+su $NODE_USER -c "cd /home/$NODE_USER/builds/node-v0.8.8; make"
+su $NODE_USER -c "cd /home/$NODE_USER/builds/node-v0.8.8; make install"
 
 # Clone and configure project repository
-cd ~
-git clone $PROJECT_REPO $PROJECT_DIR
-cd $PROJECT_DIR
-npm install -g grunt
-npm install
-
-# Return to root user
-exit
+su $NODE_USER -c "cd /home/$NODE_USER; git clone $PROJECT_REPO $PROJECT_DIR"
+su $NODE_USER -c "cd $PROJECT_DIR; /opt/joyent/node/bin/npm install -g grunt"
+su $NODE_USER -c "cd $PROJECT_DIR; /opt/joyent/node/bin/npm install"
 
 # Copy OAuth credentials into place
 cp ~/import/oauth/*.json $PROJECT_DIR/backend/credentials/oauth
 
-# Copy the MapCenter service script (responsible for pulling, building, and
+# Copy the second-screen service script (responsible for pulling, building, and
 # running the project) into place, and make system aware of it so the script
 # will be run at startup
 cp ~/import/secondscreen-runner ~
