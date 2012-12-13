@@ -10,6 +10,7 @@ git pull origin master
 # Fetch new dependencies, if any
 npm install
 # Build the project
+grunt dev
 grunt
 
 cd backend

@@ -1,29 +1,29 @@
-#! /bin/sh
+#!/bin/bash
 
 # Values to configure the target system. Re-set these as necessary for your
 # environment.
-NODE_HOST=127.0.0.1
+NODE_HOST=`ifconfig  | grep 'inet addr:' | grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}' | head -n 1`
 NODE_PORT=8000
 NODE_USER=noder
 PROJECT_REPO=https://github.com/newshour/second_screen.git
 
 NODE_HOME=/home/$NODE_USER
-PROJECT_DIR=$NODE_HOME/map_center
+PROJECT_DIR=$NODE_HOME/second_screen
 
 # setup.sh
 chmod 700 /root
 
 # Include Debian testing repository in list of available packages
 echo "APT::Default-Release \"stable\";" >> /etc/apt/apt.conf
-echo "deb http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.lst
-echo "deb-src http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.lst
+echo "deb http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.list
+echo "deb-src http://ftp.us.debian.org/debian/ testing main" >> /etc/apt/sources.list
 
 apt-get update
 
 apt-get install git
 
 # Install Redis from Debian testing repository
-apt-get install -t testing install redis-server
+apt-get -t testing install redis-server
 
 # Install packages necessary to build Node.js
 apt-get install python build-essential pkg-config libssl-dev
