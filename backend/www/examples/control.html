@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Broadcaster options</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/scripts/second/livemap.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var $queue = $('.queue-select-queue');
+                $queue.sortable({
+                    axis: 'y',
+                    cursor: 'move',
+                    handle: '.queue-item-handle'
+                });
+                
+                var $itemTemplate = $('.templates .queue-item');
+                $('.queue-select-add a').on('click', function(event) {
+                    var $newItem = $itemTemplate.clone().appendTo($queue);
+                    $newItem.find('.queue-item-href').focus();
+                    $queue.sortable('refresh');
+                    event.preventDefault();
+                });
+                
+                var $form = $('#broadcaster-queue');
+                var $formQueue = $('#broadcaster-queued');
+                $queue.on('click', '.queue-item-send', function(event) {
+                    $formQueue.val($(this).siblings('.queue-item-href').val());
+                    $form.submit();
+                    event.preventDefault();
+                });
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/overcast/jquery-ui.css" />
+        <style type="text/css">
+            .templates {
+                display: none;
+            }
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            .big-red-button {
+                border: 1px solid #000;
+                background-color: #900;
+                color: #fff;
+                padding: 0.5em;
+            }
+            .queue-select {
+                width: 50%;
+            }
+            .queue-select-queue, .queue-item {
+                list-style-type: none;
+            }
+            .queue-select-queue {
+                margin: 0;
+                padding: 0;
+            }
+            .queue-item {
+                background-color: #fff;
+                margin: 0;
+                overflow: hidden;
+                padding: 0.5em;
+            }
+                .queue-item .ui-icon {
+                    display: inline-block;
+                }
+        </style>
+    </head>
+    <body>
+        <form class="queue-main" id="broadcaster-queue">
+            <input type="hidden" id="broadcaster-queued" name="broadcaster-queued" class="queue-item" />
+        </form>
+        <div id="backend-controls">
+            <h3>Backend controls:</h3>
+            <div id="sidebar"></div>
+        </div>
+        <div class="queue-select">
+            <div class="category" id="queue-select-module">
+                <h4>Pages to show:</h4>
+                <ul class="queue-select-queue">
+                </ul>
+                <p class="queue-select-add"><a href="#">Add page</a></p>
+            </div>
+        </div>
+        <div class="templates">
+            <li class="queue-item">
+                <span class="ui-icon ui-icon-arrowthick-2-n-s queue-item-handle"></span>
+                <input type="text" class="queue-item-href" value="" />
+                <a href="#" class="queue-item-send">Send</a>
+            </li>
+        </div>
+    </body>
+</html>
