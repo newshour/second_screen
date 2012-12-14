@@ -25,3 +25,4 @@ backend/www/scripts/jst.js
 # Copied from shared/ during build
 backend/www/scripts/shared
 frontend/dist/second/shared
+backend/www/scripts/second

@@ -92,7 +92,11 @@ module.exports = function(grunt) {
             "shared/livemap_popcorn.js",
             "shared/livemap_connection.js"
           ],
-          "frontend/dist/second/shared/lib": "shared/lib/*"
+          "frontend/dist/second/shared/lib": "shared/lib/*",
+          "backend/www/scripts/second": [
+            "frontend/dist/second/livemap.js",
+            "frontend/dist/second/livemap-playback.js"
+          ]
         }
       }
     },
