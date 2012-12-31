@@ -22,7 +22,7 @@ downloaded free of charge from [debian.org](http://www.debian.org/).
     - startup.sh
   - Public key files (`*.pub`) for intended SSH users
   - OAuth service credentials, formatted as described in
-    `backend/credentials/oauth/readme.md`
+    `backend/credentials/oauth/contents.md`
 
   The following is a graphical representation of the expected directory
   structure:
@@ -41,4 +41,10 @@ downloaded free of charge from [debian.org](http://www.debian.org/).
 5. Execute the `setup.sh` shell script, answering prompts as necessary
 
 When complete, the web interface will be accessible via the host and port
-defined in `setup.sh`.
+defined in `setup.sh`. The setup script currently sets the host to be its best
+guess at the server's public IP address.
+
+To start or stop the server, run `/etc/init.d/secondscreen-runner start` or
+`/etc/init.d/secondscreen-runner stop`. Starting the server in this way will
+automatically pull the latest copy of the GitHub repo and rebuild the project
+first.
