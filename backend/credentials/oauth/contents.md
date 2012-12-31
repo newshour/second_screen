@@ -10,7 +10,7 @@ following structure:
 	"key": <string>,
 	"secret": <string>,
 	"idPath": <string>,
-	"ids": [			// A whitelist of authorized IDs
+	"ids": [			// A whitelist of authorized IDs (case-sensitive)
 		<string>
 	]
 }
